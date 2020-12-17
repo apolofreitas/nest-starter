@@ -1,0 +1,6 @@
+node_modules
+mongodb
+dist
+docker-compose*
+Dockerfile
+.DS_Store

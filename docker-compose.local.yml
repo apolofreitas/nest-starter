@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mongodb:
+    container_name: mongodb-dev
+    image: mongo:latest
+    expose: # expose port only internal for docker
+      - 27017
+    ports: # expose port outside docker
+      - 27017:27017
+    volumes:
+      - ./mongodb/dev:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: dev
+
+  mongo-express:
+    container_name: mongo-express-dev
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
